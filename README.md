@@ -1,4 +1,4 @@
-# Android App Composable Template
+# Android Architecture Guide Template
 
 This is a template to build an Android app applying good practices and using a clean architecture, you will see that the code is super decoupled with external frameworks and even with the same Android framework, this will help you to model your domain purely in Kotlin without generating external dependencies.
 
