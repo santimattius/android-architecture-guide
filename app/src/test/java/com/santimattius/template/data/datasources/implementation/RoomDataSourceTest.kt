@@ -8,9 +8,8 @@ import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
-import org.junit.Assert
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
@@ -20,15 +19,11 @@ class RoomDataSourceTest {
     @get:Rule
     val coroutinesTestRule = CoroutinesTestRule()
 
-    private lateinit var roomDataSource: RoomDataSource
-    private lateinit var picSumDao: PicSumDao
-
-
-    @Before
-    fun setUp() {
-        picSumDao = mockk()
-        roomDataSource = RoomDataSource(picSumDao, coroutinesTestRule.testDispatcher)
-    }
+    private val picSumDao: PicSumDao = mockk()
+    private val roomDataSource: RoomDataSource = RoomDataSource(
+        picSumDao = picSumDao,
+        dispatcher = coroutinesTestRule.testDispatcher
+    )
 
     @Test
     fun `validate is empty check`() = runBlockingTest {
@@ -37,8 +32,7 @@ class RoomDataSourceTest {
         // When
         val isEmpty = roomDataSource.isEmpty()
         // Then
-        assert(isEmpty)
-        every { picSumDao.count() }
+        assertThat(isEmpty, IsEqual(true))
     }
 
     @Test
@@ -48,8 +42,7 @@ class RoomDataSourceTest {
         // When
         val isEmpty = roomDataSource.isEmpty()
         // Then
-        Assert.assertThat(isEmpty, IsEqual(false))
-        every { picSumDao.count() }
+        assertThat(isEmpty, IsEqual(false))
     }
 
     @Test
@@ -59,15 +52,17 @@ class RoomDataSourceTest {
         //When
         val pictures = roomDataSource.getPictures()
         //Then
-        assert(pictures.isEmpty())
-        every { picSumDao.getAll() }
+        assertThat(pictures, IsEqual(emptyList()))
     }
 
     @Test
     fun insertPictures() = runBlockingTest {
+        //Given
         val pictures = emptyList<Picture>()
         every { picSumDao.insertPictures(emptyList()) } returns Unit
+        //When
         roomDataSource.insertPictures(pictures)
+        //Then
         verify { picSumDao.insertPictures(emptyList()) }
     }
 }
