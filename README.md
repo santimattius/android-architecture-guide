@@ -20,7 +20,7 @@ In the following images you will see how the app is built and what its levels of
 ## Android Architecture Guide
 Architecture guide recommended by google for android
 - [UI layer](https://developer.android.com/jetpack/guide/ui-layer)
-- [Domain layer (Optional)] (https://developer.android.com/jetpack/guide/domain-layer)
+- [Domain layer](https://developer.android.com/jetpack/guide/domain-layer)
 - [Data layer](https://developer.android.com/jetpack/guide/data-layer)
 
 <p align="center">
