@@ -3,7 +3,7 @@
 This is a template to build an Android app applying good practices and using a clean architecture, you will see that the code is super decoupled with external frameworks and even with the same Android framework, this will help you to model your domain purely in Kotlin without generating external dependencies.
 
 <p align="center">
-  <img src="https://github.com/santimattius/android-arch-composable-template/blob/master/screenshoot/android-clean-arch-capture.png?raw=true" alt="App Capture"/>
+  <img src="https://github.com/santimattius/android-architecture-guide/blob/master/screenshoot/android-clean-arch-capture.png?raw=true" alt="App Capture"/>
 </p>
 
 
@@ -14,14 +14,18 @@ In the following images you will see how the app is built and what its levels of
 ## General
 
 <p align="center">
-  <img src="https://github.com/santimattius/android-arch-composable-template/blob/master/screenshoot/android-clean-arch-general.png?raw=true" alt="general architecture"/>
+  <img src="https://github.com/santimattius/android-architecture-guide/blob/master/screenshoot/android-clean-arch-general.png?raw=true" alt="general architecture"/>
 </p>
 
 ## Layers
 <p align="center">
-  <img src="https://github.com/santimattius/android-arch-composable-template/blob/master/screenshoot/android-clean-arch-layers.png?raw=true" alt="architecture layers"/>
+  <img src="https://github.com/santimattius/android-architecture-guide/blob/master/screenshoot/android-clean-arch-layers.png?raw=true" alt="architecture layers"/>
 </p>
 
+## Android Architecture Guide
+<p align="center">
+  <img src="https://github.com/santimattius/android-architecture-guide/blob/master/screenshoot/android-architecture-guide.png?raw=true" alt="architecture layers"/>
+</p>
 ## Dependencies
 
 Below you will find the libraries used to build the template and according to my criteria the most used in android development so far.

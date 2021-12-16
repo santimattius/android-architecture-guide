@@ -33,7 +33,7 @@ project.ext {
         // Koin for Jetpack Compose
         implementation "io.insert-koin:koin-androidx-compose:$koin_version"
 
-        testImplementation "org.koin:koin-test:$koin_version"
+        testImplementation "io.insert-koin:koin-test:$koin_version"
     }
 
     accompanist = Group {
