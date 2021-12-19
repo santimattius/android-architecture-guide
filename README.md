@@ -24,7 +24,7 @@ Architecture guide recommended by google for android
 - [Data layer](https://developer.android.com/jetpack/guide/data-layer)
 
 <p align="center">
-  <img width="450" src="https://github.com/santimattius/android-architecture-guide/blob/feature/architecture-guide/screenshoot/android-architecture-guide.png?raw=true" alt="architecture layers"/>
+  <img width="450" src="https://github.com/santimattius/android-architecture-guide/blob/master/screenshoot/android-architecture-guide.png?raw=true" alt="architecture layers"/>
 </p>
 
 ## Dependencies
