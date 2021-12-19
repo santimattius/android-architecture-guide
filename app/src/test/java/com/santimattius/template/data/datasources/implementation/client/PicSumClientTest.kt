@@ -7,41 +7,36 @@ import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert
-import org.junit.Before
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.core.IsEqual
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
 class PicSumClientTest {
 
-    private lateinit var service: PicSumService
-    private lateinit var client: PicSumClient
-
-    @Before
-    fun setUp() {
-        service = mockk()
-        client = PicSumClient(service)
-    }
+    private val service: PicSumService = mockk()
+    private val client: PicSumClient = PicSumClient(service)
 
     @Test
     fun `fetch service with response case`() = runBlockingTest {
+        //Given
         coEvery { service.fetchList() } returns emptyList()
+        //When
         val response = client.fetchList()
-        Assert.assertEquals(
-            emptyList<NetworkPicture>(),
-            (response as Success<List<NetworkPicture>>).out
-        )
+        //Then
+        val output = (response as Success<List<NetworkPicture>>).out
+        assertThat(output, IsEqual(emptyList()))
     }
 
     @Test
     fun `fetch service with exception`() = runBlockingTest {
+        //Given
         val message = "fake_message"
         coEvery { service.fetchList() } throws Throwable(message)
+        //When
         val response = client.fetchList()
-
-        Assert.assertEquals(
-            ServiceError(message),
-            (response as Failure).exception
-        )
+        //Then
+        val error = (response as Failure).exception
+        assertThat(error, IsEqual(ServiceError(message)))
     }
 }

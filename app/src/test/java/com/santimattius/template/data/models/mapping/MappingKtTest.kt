@@ -2,8 +2,8 @@ package com.santimattius.template.data.models.mapping
 
 
 import com.santimattius.template.data.models.PictureEntity
-import com.santimattius.template.data.models.PictureEntityMother
-import com.santimattius.template.data.models.PictureMother
+import com.santimattius.template.objectmothers.PictureEntityMother
+import com.santimattius.template.objectmothers.PictureMother
 import com.santimattius.template.domain.entities.Picture
 import org.hamcrest.core.IsEqual
 import org.junit.Assert.assertThat

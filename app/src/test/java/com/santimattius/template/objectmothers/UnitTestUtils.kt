@@ -1,4 +1,4 @@
-package com.santimattius.template.data.models
+package com.santimattius.template.objectmothers
 
 object UnitTestUtils {
 

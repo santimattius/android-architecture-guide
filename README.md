@@ -1,9 +1,9 @@
-# Android App Composable Template
+# Android Architecture Guide Template
 
 This is a template to build an Android app applying good practices and using a clean architecture, you will see that the code is super decoupled with external frameworks and even with the same Android framework, this will help you to model your domain purely in Kotlin without generating external dependencies.
 
 <p align="center">
-  <img src="https://github.com/santimattius/android-arch-composable-template/blob/master/screenshoot/android-clean-arch-capture.png?raw=true" alt="App Capture"/>
+  <img src="https://github.com/santimattius/android-architecture-guide/blob/master/screenshoot/android-clean-arch-capture.png?raw=true" alt="App Capture"/>
 </p>
 
 
@@ -11,15 +11,20 @@ This is a template to build an Android app applying good practices and using a c
 
 In the following images you will see how the app is built and what its levels of abstraction are.
 
-## General
+## Layers
 
 <p align="center">
-  <img src="https://github.com/santimattius/android-arch-composable-template/blob/master/screenshoot/android-clean-arch-general.png?raw=true" alt="general architecture"/>
+  <img width="500" src="https://github.com/santimattius/android-architecture-guide/blob/master/screenshoot/android-clean-arch-general.png?raw=true" alt="general architecture"/>
 </p>
 
-## Layers
+## Android Architecture Guide
+Architecture guide recommended by google for android
+- [UI layer](https://developer.android.com/jetpack/guide/ui-layer)
+- [Domain layer](https://developer.android.com/jetpack/guide/domain-layer)
+- [Data layer](https://developer.android.com/jetpack/guide/data-layer)
+
 <p align="center">
-  <img src="https://github.com/santimattius/android-arch-composable-template/blob/master/screenshoot/android-clean-arch-layers.png?raw=true" alt="architecture layers"/>
+  <img width="450" src="https://github.com/santimattius/android-architecture-guide/blob/feature/architecture-guide/screenshoot/android-architecture-guide.png?raw=true" alt="architecture layers"/>
 </p>
 
 ## Dependencies
