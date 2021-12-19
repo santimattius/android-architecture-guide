@@ -45,7 +45,7 @@ class ListOfPictureTest {
     }
 
     @Test
-    fun testFirstAndLastPictureDescription() {
+    fun testFirstAndLastPictureAuthor() {
         composeTestRule.setContent {
             PicturesApplication {
                 ListOfPicture(getPicturesList())
