@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android App Template</string>
+    <string name="app_name">Android Architecture Guide</string>
     <string name="message_loading_error">Ha ocurrido un error al cargar las images</string>
     <string name="button_text_positive_error">Reintentar</string>
     <string name="button_text_negative_error">Salir</string>

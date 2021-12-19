@@ -9,6 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import coil.annotation.ExperimentalCoilApi
 import com.santimattius.template.R
@@ -43,13 +44,15 @@ fun HomeScreen(
     }
 }
 
+const val LIST_OF_PICTURE_TAG = "list_of_picture_test_tag"
+
 @ExperimentalCoilApi
 @Composable
 fun ListOfPicture(
     pictures: List<PictureUiModel>,
-    onClick: (PictureUiModel) -> Unit
+    onClick: (PictureUiModel) -> Unit = {}
 ) {
-    LazyColumn {
+    LazyColumn(modifier = Modifier.testTag(LIST_OF_PICTURE_TAG)) {
         items(pictures) { picture ->
             PictureCard(picture = picture, modifier = Modifier.clickable {
                 onClick(picture)

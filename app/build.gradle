@@ -10,7 +10,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.santimattius.template"
+        applicationId "com.santimattius.arch.guide"
         minSdkVersion 23
         targetSdkVersion 31
         versionCode 1
@@ -46,6 +46,13 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+        unitTests.returnDefaultValues = true
     }
 
     packagingOptions {
