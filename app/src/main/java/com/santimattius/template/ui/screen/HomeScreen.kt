@@ -35,7 +35,7 @@ fun HomeScreen(
         when {
             viewModel.state.isLoading -> LoadingIndicator()
             viewModel.state.withError -> ErrorView(stringResource(R.string.text_error))
-            viewModel.state.isEmpty -> Text(text = "No hay datos")
+            viewModel.state.isEmpty -> ErrorView(stringResource(R.string.text_empty))
             else -> ListOfPicture(
                 pictures = viewModel.state.pictures,
                 onClick = onClick

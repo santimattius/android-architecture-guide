@@ -38,6 +38,7 @@ class HomeViewModel(
     }
 
     fun retry() {
+        state = state.copy(isLoading = false)
         pictures()
     }
 }
