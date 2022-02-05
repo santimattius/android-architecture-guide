@@ -19,23 +19,23 @@ class PicSumClientTest {
 
     @Test
     fun `fetch service with response case`() = runBlockingTest {
-        //Given
+        // Given
         coEvery { service.fetchList() } returns emptyList()
-        //When
+        // When
         val response = client.fetchList()
-        //Then
+        // Then
         val output = (response as Success<List<NetworkPicture>>).out
         assertThat(output, IsEqual(emptyList()))
     }
 
     @Test
     fun `fetch service with exception`() = runBlockingTest {
-        //Given
+        // Given
         val message = "fake_message"
         coEvery { service.fetchList() } throws Throwable(message)
-        //When
+        // When
         val response = client.fetchList()
-        //Then
+        // Then
         val error = (response as Failure).exception
         assertThat(error, IsEqual(ServiceError(message)))
     }

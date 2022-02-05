@@ -4,7 +4,7 @@ import com.santimattius.template.data.models.PictureEntity
 
 object PictureEntityMother {
 
-    fun create(id: Long = 1234) = PictureEntity(
+    private fun create(id: Long = 1234) = PictureEntity(
         id = "$id",
         author = TestUtils.randomString(),
         width = TestUtils.randomInt(),

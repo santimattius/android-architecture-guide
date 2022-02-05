@@ -65,6 +65,5 @@ class ListOfPictureTest {
         }
     }
 
-
     private fun getPicturesList() = PictureMother.createPictures().asUiModels()
 }

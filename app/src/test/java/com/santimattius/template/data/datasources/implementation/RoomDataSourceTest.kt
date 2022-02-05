@@ -27,7 +27,7 @@ class RoomDataSourceTest {
 
     @Test
     fun `validate is empty check`() = runBlockingTest {
-        //Given
+        // Given
         every { picSumDao.count() } returns 0
         // When
         val isEmpty = roomDataSource.isEmpty()
@@ -37,7 +37,7 @@ class RoomDataSourceTest {
 
     @Test
     fun `validate no is empty check`() = runBlockingTest {
-        //Given
+        // Given
         every { picSumDao.count() } returns 10
         // When
         val isEmpty = roomDataSource.isEmpty()
@@ -47,22 +47,22 @@ class RoomDataSourceTest {
 
     @Test
     fun getPictures() = runBlockingTest {
-        //Given
+        // Given
         every { picSumDao.getAll() } returns emptyList()
-        //When
+        // When
         val pictures = roomDataSource.getPictures()
-        //Then
+        // Then
         assertThat(pictures, IsEqual(emptyList()))
     }
 
     @Test
     fun insertPictures() = runBlockingTest {
-        //Given
+        // Given
         val pictures = emptyList<Picture>()
         every { picSumDao.insertPictures(emptyList()) } returns Unit
-        //When
+        // When
         roomDataSource.insertPictures(pictures)
-        //Then
+        // Then
         verify { picSumDao.insertPictures(emptyList()) }
     }
 }

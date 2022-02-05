@@ -8,7 +8,7 @@ import java.util.concurrent.TimeoutException
 
 fun <T> LiveData<T>.getOrAwaitValue(
     time: Long = 2,
-    timeUnit: TimeUnit = TimeUnit.SECONDS
+    timeUnit: TimeUnit = TimeUnit.SECONDS,
 ): T {
     var data: T? = null
     val latch = CountDownLatch(1)

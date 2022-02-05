@@ -19,6 +19,9 @@ import coil.compose.rememberImagePainter
 import com.santimattius.template.R
 import com.santimattius.template.ui.models.PictureUiModel
 
+private const val ASPECT_WIDTH = 16
+private const val ASPECT_HEIGHT = 8
+private const val MAX_LINE = 2
 
 @Composable
 fun LoadingIndicator() {
@@ -43,11 +46,6 @@ fun ErrorView(message: String) {
         Text(message)
     }
 }
-
-
-private const val ASPECT_WIDTH = 16
-private const val ASPECT_HEIGHT = 8
-private const val MAX_LINE = 2
 
 @ExperimentalCoilApi
 @Composable

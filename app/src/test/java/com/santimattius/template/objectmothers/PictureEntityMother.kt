@@ -13,6 +13,5 @@ object PictureEntityMother {
         downloadUrl = UnitTestUtils.randomString()
     )
 
-
     fun generate(size: Int = 10) = (1..size).map { create(id = it.toLong()) }
 }

@@ -25,36 +25,34 @@ class HomeViewModelTest {
 
     @Test
     fun `check case when init view model`() = runBlockingTest {
-        //Given
+        // Given
         val userCase = mockk<GetPictures>()
         coEvery { userCase() } returns emptyList()
-        //When
+        // When
         val viewModel = HomeViewModel(userCase)
-        //Then
+        // Then
         assertThat(viewModel.state, IsEqual(HomeState(pictures = emptyList())))
     }
 
-
     @Test
     fun `check when init fail with exception`() = runBlockingTest {
-        //Given
+        // Given
         val userCase = mockk<GetPictures>()
         coEvery { userCase() } throws Exception()
-        //When
+        // When
         val viewModel = HomeViewModel(userCase)
         assertThat(viewModel.state, IsEqual(HomeState(withError = true)))
     }
 
     @Test
     fun `check case with retry`() = runBlockingTest {
-        //Given
+        // Given
         val userCase = mockk<GetPictures>()
         coEvery { userCase() } returns emptyList()
-        //When
+        // When
         val viewModel = HomeViewModel(userCase)
         viewModel.retry()
-        //Then
+        // Then
         assertThat(viewModel.state, IsEqual(HomeState(pictures = emptyList())))
     }
-
 }
