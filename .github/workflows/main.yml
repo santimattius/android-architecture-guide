@@ -97,3 +97,9 @@ jobs:
         run: bash <(curl -s https://codecov.io/bash) -f "app/build/reports/coverage/debug/report.xml"
         # This workflow contains a single job called "build"
 
+  apksize:
+    name: App Size
+    runs-on: ubuntu-latest
+    steps:
+      - name: Android App size difference
+        uses: microsoft/android-app-size-diff@v1.0.5
