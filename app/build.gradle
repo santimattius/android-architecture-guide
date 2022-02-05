@@ -68,8 +68,9 @@ android {
 }
 
 detekt {
-    autoCorrect = true
+    config = files("${project.rootDir}/config/detekt/detekt.yml")
     baseline = file("$rootDir/detekt-baseline.xml")
+    autoCorrect = true
 }
 
 dependencies {
