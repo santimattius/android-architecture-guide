@@ -39,12 +39,14 @@ Below you will find the libraries used to build the template and according to my
   - https://square.github.io/retrofit/
 - **Gson** - json parser:
   - https://github.com/google/gson
-- **Glide** with image loader:
-  - https://github.com/bumptech/glide
+- **Coil** with image loader:
+  - https://coil-kt.github.io/coil/compose/
 - **Kotlin coroutines**
   - https://kotlinlang.org/docs/reference/coroutines-overview.html
 - **Mockk**, testing library
-  - https://mockk.io/  
+  - https://mockk.io/ 
+- **WebMockServer** 
+  - https://github.com/square/okhttp/tree/master/mockwebserver  
 
 ## References
 
