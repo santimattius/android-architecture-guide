@@ -80,11 +80,13 @@ jobs:
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
           script: ./gradlew connectedCheck
+
       - name: generate report
         uses: actions/upload-artifact@v2
         with:
           name: report
           path: app/build/reports/coverage/debug
+
       - name: Download Test Reports Folder
         uses: actions/download-artifact@v2
         with:

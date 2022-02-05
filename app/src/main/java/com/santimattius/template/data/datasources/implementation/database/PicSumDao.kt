@@ -17,5 +17,4 @@ interface PicSumDao {
 
     @Query("SELECT COUNT(id) FROM picture")
     fun count(): Int
-
 }
