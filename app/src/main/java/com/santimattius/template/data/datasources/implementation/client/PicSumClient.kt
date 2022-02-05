@@ -5,6 +5,7 @@ import com.santimattius.template.data.models.NetworkPicture
 
 class PicSumClient(private val service: PicSumService) {
 
+    @Suppress("TooGenericExceptionCaught")
     suspend fun fetchList(): Result<List<NetworkPicture>> = try {
         Result.success(service.fetchList())
     } catch (exception: Throwable) {

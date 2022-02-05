@@ -2,8 +2,11 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'com.hiya.jacoco-android'
+    id 'jacoco'
+    id 'io.gitlab.arturbosch.detekt'
 }
+
+apply from: "$rootDir/jacoco.gradle"
 
 android {
     compileSdkVersion 31
@@ -25,6 +28,7 @@ android {
 
     buildTypes {
         release {
+            testCoverageEnabled false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -37,13 +41,14 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
         useIR = true
     }
 
     buildFeatures {
         compose true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
     }
@@ -51,8 +56,8 @@ android {
     testOptions {
         unitTests {
             includeAndroidResources = true
+            returnDefaultValues = true
         }
-        unitTests.returnDefaultValues = true
     }
 
     packagingOptions {
@@ -62,28 +67,8 @@ android {
     }
 }
 
-def androidExclusion = [
-        '**/databinding/**/*.*',
-        '**/android/databinding/*Binding.*',
-        '**/BR.*',
-        '**/R.*',
-        '**/R$*.*',
-        '**/BuildConfig.*',
-        '**/Manifest*.*',
-        '**/*_MembersInjector.*',
-        '**/Dagger*Component.*',
-        '**/Dagger*Component$Builder.*',
-        '**/*Module_*Factory.*',
-        '**/*Fragment*.*',
-        '**/*Activity*.*',
-        '**/*Adapter*.*',
-        '**/*ViewPager*.*',
-        '**/*ViewHolder*.*',
-        '**/*Module*.*'
-]
-
-jacocoAndroidUnitTestReport {
-    excludes += androidExclusion
+detekt {
+    autoCorrect = true
 }
 
 dependencies {

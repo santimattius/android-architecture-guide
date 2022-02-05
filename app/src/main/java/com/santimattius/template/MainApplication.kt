@@ -5,7 +5,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import com.santimattius.template.di.AppConfiguration
-import com.santimattius.template.ui.theme.AndroidarchtemplateTheme
+import com.santimattius.template.ui.theme.AndroidArchitecureGuideTheme
 
 class MainApplication : Application() {
 
@@ -17,7 +17,7 @@ class MainApplication : Application() {
 
 @Composable
 fun PicturesApplication(content: @Composable () -> Unit) {
-    AndroidarchtemplateTheme {
+    AndroidArchitecureGuideTheme {
         Surface(color = MaterialTheme.colors.background) {
             content()
         }

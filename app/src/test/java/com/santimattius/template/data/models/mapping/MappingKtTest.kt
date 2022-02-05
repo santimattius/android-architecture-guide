@@ -5,8 +5,8 @@ import com.santimattius.template.data.models.PictureEntity
 import com.santimattius.template.objectmothers.PictureEntityMother
 import com.santimattius.template.objectmothers.PictureMother
 import com.santimattius.template.domain.entities.Picture
+import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
-import org.junit.Assert.assertThat
 import org.junit.Test
 
 class MappingKtTest {
