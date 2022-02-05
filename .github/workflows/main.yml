@@ -15,44 +15,38 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   detekt:
-    # The type of runner that the job will run on
+    name: Check Code Quality
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      #Run detekt
-      - name: Detekt all
-        # You may pin to the exact commit or the version.
-        # uses: natiginfo/action-detekt-all@388e47842698611213dfd31aa777fc4f85b5132b
-        uses: natiginfo/action-detekt-all@1.19.0
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          ref: ${{ github.head_ref }}
+      - name: detekt
+        uses: alaegin/Detekt-Action@v1.19
+        with:
+          github_token: ${{ secrets.github_token }}
+          detekt_config: detekt-config.yml
 
   tests:
-    # The type of runner that the job will run on
+    name: Tests
     runs-on: macos-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      # Execute unit tests
+      - name: Chechout
+        uses: actions/checkout@v2
       - name: Unit Test with Android Emulator Runner
         uses: ReactiveCircus/android-emulator-runner@v2.14.3
         with:
           api-level: 29
           script: ./gradlew connectedCheck
-
-      # run: ./gradlew testDebugUnitTest
-
       - name: generate report
         uses: actions/upload-artifact@v2
         with:
           name: report
           path: app/build/reports/coverage/debug
-
-
       - name: Download Test Reports Folder
         uses: actions/download-artifact@v2
         with:
