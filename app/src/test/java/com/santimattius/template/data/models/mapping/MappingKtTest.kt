@@ -1,6 +1,5 @@
 package com.santimattius.template.data.models.mapping
 
-
 import com.santimattius.template.data.models.PictureEntity
 import com.santimattius.template.domain.entities.Picture
 import com.santimattius.template.objectmothers.PictureEntityMother

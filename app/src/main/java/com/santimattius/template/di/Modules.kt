@@ -24,7 +24,6 @@ private val presentationModule = module {
     viewModel { HomeViewModel(getPictures = get<GetPictures>()) }
 }
 
-
 /**
  * domain layer definition module
  */
@@ -58,8 +57,6 @@ private val dataModule = module {
             remoteDataSource = get<RemoteDataSource>()
         )
     }
-
 }
-
 
 internal val modules = listOf(presentationModule, domainModule, dataModule)

@@ -41,7 +41,7 @@ class ListOfPictureTest {
         }
         composeTestRule.onNodeWithTag(LIST_OF_PICTURE_TAG)
             .onChildren()
-            .assertCountEquals(4)
+            .assertCountEquals(2)
     }
 
     @Test
@@ -61,7 +61,7 @@ class ListOfPictureTest {
             onNodeWithTag(LIST_OF_PICTURE_TAG)
                 .onChildren()
                 .onLast()
-                .assert(hasText("Author 3"))
+                .assert(hasText("Author 1"))
         }
     }
 
