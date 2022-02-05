@@ -69,6 +69,7 @@ android {
 
 detekt {
     autoCorrect = true
+    baseline = file("$rootDir/detekt-baseline.xml")
 }
 
 dependencies {
