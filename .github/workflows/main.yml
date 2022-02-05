@@ -15,8 +15,22 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  detekt:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      #Run detekt
+      - name: Detekt all
+        # You may pin to the exact commit or the version.
+        # uses: natiginfo/action-detekt-all@388e47842698611213dfd31aa777fc4f85b5132b
+        uses: natiginfo/action-detekt-all@1.19.0
+
+  tests:
     # The type of runner that the job will run on
     runs-on: macos-latest
 
@@ -54,3 +68,5 @@ jobs:
 
       - name: Upload Test Report
         run: bash <(curl -s https://codecov.io/bash) -f "app/build/reports/coverage/debug/report.xml"
+        # This workflow contains a single job called "build"
+
