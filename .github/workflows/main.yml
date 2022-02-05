@@ -28,7 +28,7 @@ jobs:
         uses: alaegin/Detekt-Action@v1.19
         with:
           github_token: ${{ secrets.github_token }}
-          detekt_config: /config/detekt/detekt.yml
+          detekt_config: config/detekt/detekt.yml
 
   tests:
     name: Tests
