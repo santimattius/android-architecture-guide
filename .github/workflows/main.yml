@@ -78,4 +78,3 @@ jobs:
           metrics: 'apkSize, installSize'
           thresholds: '20000000, 20000000'
           summaryOutputPath: summary.md
-          telemetryEnabled: false
