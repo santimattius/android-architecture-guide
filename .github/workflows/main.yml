@@ -71,10 +71,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Android App size difference
-        uses: microsoft/android-app-size-diff@v1.0.5
+        uses: microsoft/android-app-size-diff@v1
         with:
-          baseAppPath: apkSize/app-debug.apk
-          targetAppPath: apkSize/app-debug.apk
-          metrics: 'apkSize, installSize'
-          thresholds: '20000000, 20000000'
+          baseAppPath: test/assets/test.apk
+          baseAppLabel: Base app
+          targetAppPath: test/assets/test.apk
+          targetAppLabel: Target app
           summaryOutputPath: summary.md
+          metrics: test, installSize, arscFile, nativeLibs, dexFiles
+          thresholds: 10, 10, 10, 10, 10
