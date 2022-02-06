@@ -18,11 +18,11 @@ class GetPicturesTest {
 
     @Test
     fun `invoke get picture use case`() = runBlockingTest {
-        //Given
+        // Given
         coEvery { repository.getPictures() } returns emptyList()
-        //When
+        // When
         val result = useCase.invoke()
-        //Then
+        // Then
         assertThat(result, IsEqual(emptyList()))
         coVerify { repository.getPictures() }
     }

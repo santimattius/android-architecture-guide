@@ -6,9 +6,9 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.santimattius.template.data.datasources.implementation.database.PicSumDao
 import com.santimattius.template.data.datasources.implementation.database.PicSumDataBase
-import org.hamcrest.CoreMatchers
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.core.IsEqual
 import org.junit.After
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -41,9 +41,8 @@ class PicSumDataBaseTest {
         val generate = PictureEntityMother.generate(size = 2)
         picSumDao.insertPictures(generate)
         val result = picSumDao.getAll()
-        Assert.assertThat(result, CoreMatchers.equalTo(generate))
+        assertThat(result, IsEqual(generate))
     }
-
 
     @Test
     @Throws(Exception::class)
@@ -51,6 +50,6 @@ class PicSumDataBaseTest {
         val generate = PictureEntityMother.generate(size = 2)
         picSumDao.insertPictures(generate)
         val result = picSumDao.count()
-        Assert.assertThat(result, CoreMatchers.equalTo(generate.size))
+        assertThat(result, IsEqual(generate.size))
     }
 }

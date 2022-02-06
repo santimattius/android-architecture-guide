@@ -13,7 +13,6 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Test
 
-
 @ExperimentalCoroutinesApi
 class ServiceDataSourceTest {
 
@@ -23,24 +22,24 @@ class ServiceDataSourceTest {
     @Test
     fun `get picture on client result is success`() = runBlockingTest {
 
-        //Given
+        // Given
         val pictures = NetworkPictureMother.pictures()
         coEvery { picSumClient.fetchList() } returns Result.success(pictures)
-        //When
+        // When
         val result = serviceDataSource.getPictures()
-        //Then
+        // Then
         assertThat(result, IsEqual(pictures))
         coVerify { picSumClient.fetchList() }
     }
 
     @Test
     fun `get picture on client result is fail`() = runBlockingTest {
-        //Given
+        // Given
         val failure = Result.failure(ServiceError("test case on fail"))
         coEvery { picSumClient.fetchList() } returns failure
-        //When
+        // When
         val result = serviceDataSource.getPictures()
-        //Then
+        // Then
         assertThat(result, IsEqual(emptyList()))
         coVerify { picSumClient.fetchList() }
     }

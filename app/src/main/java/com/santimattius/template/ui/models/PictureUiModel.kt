@@ -7,4 +7,4 @@ data class PictureUiModel(
     val height: Int,
     val width: Int,
     val link: String
-) : UiItem(id)
+)

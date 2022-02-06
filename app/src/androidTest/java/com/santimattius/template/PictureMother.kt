@@ -2,7 +2,7 @@ package com.santimattius.template
 
 object PictureMother {
 
-    fun createPictures() = (0..3).map {
+    fun createPictures() = (0..1).map {
         PictureTestModel(
             id = it.toString(),
             author = "Author $it",

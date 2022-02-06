@@ -1,3 +1,3 @@
 package com.santimattius.template.core.data
 
-open class AppException(_message: String?) : Throwable(message = _message)
+open class AppException(errorMessage: String?) : Throwable(message = errorMessage)

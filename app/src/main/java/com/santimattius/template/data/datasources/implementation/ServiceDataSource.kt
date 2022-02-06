@@ -11,5 +11,4 @@ internal class ServiceDataSource(private val client: PicSumClient) : RemoteDataS
         is Success -> result.out
         is Failure -> emptyList()
     }
-
 }

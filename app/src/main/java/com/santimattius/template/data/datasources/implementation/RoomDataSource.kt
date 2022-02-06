@@ -24,5 +24,3 @@ internal class RoomDataSource(
         picSumDao.insertPictures(pictures.asDbEntities())
     }
 }
-
-

@@ -19,6 +19,9 @@ import coil.compose.rememberImagePainter
 import com.santimattius.template.R
 import com.santimattius.template.ui.models.PictureUiModel
 
+private const val ASPECT_WIDTH = 16
+private const val ASPECT_HEIGHT = 8
+private const val MAX_LINE = 2
 
 @Composable
 fun LoadingIndicator() {
@@ -59,7 +62,7 @@ fun PictureCard(picture: PictureUiModel, modifier: Modifier = Modifier) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .background(Color.LightGray)
-                        .aspectRatio(ratio = (16 / 8).toFloat()),
+                        .aspectRatio(ratio = (ASPECT_WIDTH / ASPECT_HEIGHT).toFloat()),
                 )
                 Box(
                     modifier = Modifier.padding(
@@ -70,7 +73,7 @@ fun PictureCard(picture: PictureUiModel, modifier: Modifier = Modifier) {
                     Text(
                         text = picture.author,
                         style = MaterialTheme.typography.subtitle1,
-                        maxLines = 2
+                        maxLines = MAX_LINE
                     )
                 }
             }

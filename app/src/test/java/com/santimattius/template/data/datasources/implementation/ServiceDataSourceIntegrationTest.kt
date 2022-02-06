@@ -16,7 +16,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-
 @ExperimentalCoroutinesApi
 class ServiceDataSourceIntegrationTest {
 
@@ -42,29 +41,29 @@ class ServiceDataSourceIntegrationTest {
 
     @Test
     fun `get picture on client result is success`() = runBlocking {
-        //Given
+        // Given
         val pictures = NetworkPictureMother.pictures()
         val response = MockResponse()
             .setBody(Gson().toJson(pictures))
             .setResponseCode(200)
 
         mockWebServer.enqueue(response)
-        //When
+        // When
         val result = serviceDataSource.getPictures()
-        //Then
+        // Then
         assertThat(result, IsEqual(pictures))
     }
 
     @Test
     fun `get picture on client result is fail`() = runBlocking {
-        //Given
+        // Given
         val response = MockResponse()
             .setResponseCode(500)
 
         mockWebServer.enqueue(response)
-        //When
+        // When
         val result = serviceDataSource.getPictures()
-        //Then
+        // Then
         assertThat(result, IsEqual(emptyList()))
     }
 }

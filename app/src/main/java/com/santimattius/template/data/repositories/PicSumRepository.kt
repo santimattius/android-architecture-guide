@@ -17,5 +17,4 @@ internal class PicSumRepository(
         }
         return localDataSource.getPictures()
     }
-
 }
