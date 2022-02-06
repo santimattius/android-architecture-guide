@@ -60,7 +60,7 @@ jobs:
       - name: Download Test Reports Folder
         uses: actions/download-artifact@v2
         with:
-          name: Report
+          name: report
           path: app/build/reports/coverage/androidTest/debug
 
       - name: Upload Test Report
@@ -76,3 +76,4 @@ jobs:
           baseAppPath: apkSize/app-debug.apk
           targetAppPath: apkSize/app-debug.apk
           summaryOutputPath: summary.md
+          telemetryEnabled: false
