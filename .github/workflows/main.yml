@@ -70,8 +70,8 @@ jobs:
     name: App Size
     runs-on: ubuntu-latest
     steps:
-      - name: Android App size difference
-        uses: microsoft/android-app-size-diff@v1
+      - uses: microsoft/android-app-size-diff@v1.0.5
+        name: Android App size difference
         with:
           baseAppPath: test/assets/test.apk
           baseAppLabel: Base app
