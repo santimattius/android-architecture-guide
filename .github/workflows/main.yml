@@ -19,12 +19,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v2
         with:
           fetch-depth: 1
           ref: ${{ github.head_ref }}
-      - name: detekt
+      - name: DeteKt
         uses: alaegin/Detekt-Action@v1.19
         with:
           github_token: ${{ secrets.github_token }}
@@ -40,7 +40,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: set up JDK
+      - name: Set Up JDK
         uses: actions/setup-java@v1
         with:
           java-version: 11
@@ -51,18 +51,17 @@ jobs:
           api-level: 29
           script: ./gradlew connectedCheck
 
-      - name: generate report
+      - name: Generate Report
         uses: actions/upload-artifact@v2
         with:
           name: report
-          path: app/build/reports/coverage/debug
-
+          path: app/build/reports/coverage/androidTest/debug
 
       - name: Download Test Reports Folder
         uses: actions/download-artifact@v2
         with:
-          name: report
-          path: app/build/reports/coverage/debug
+          name: Report
+          path: app/build/reports/coverage/androidTest/debug
 
       - name: Upload Test Report
         run: bash <(curl -s https://codecov.io/bash) -f "app/build/reports/coverage/debug/report.xml"
@@ -73,3 +72,7 @@ jobs:
     steps:
       - name: Android App size difference
         uses: microsoft/android-app-size-diff@v1.0.5
+        with:
+          baseAppPath: apkSize/app-debug.apk
+          targetAppPath: apkSize/app-debug.apk
+          summaryOutputPath: summary.md
