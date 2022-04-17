@@ -3,9 +3,9 @@ package com.santimattius.template.data.datasources.implementation
 import com.santimattius.template.data.datasources.implementation.database.PicSumDao
 import com.santimattius.template.domain.entities.Picture
 import com.santimattius.template.utils.CoroutinesTestRule
-import io.mockk.every
+import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
-import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.MatcherAssert.assertThat
@@ -26,43 +26,50 @@ class RoomDataSourceTest {
     )
 
     @Test
-    fun `validate is empty check`() = runBlockingTest {
+    fun `validate is empty check`() {
         // Given
-        every { picSumDao.count() } returns 0
+        coEvery { picSumDao.count() } returns 0
         // When
-        val isEmpty = roomDataSource.isEmpty()
-        // Then
-        assertThat(isEmpty, IsEqual(true))
+        runBlockingTest {
+            val isEmpty = roomDataSource.isEmpty()
+            // Then
+            assertThat(isEmpty, IsEqual(true))
+        }
+
     }
 
     @Test
-    fun `validate no is empty check`() = runBlockingTest {
+    fun `validate no is empty check`() {
         // Given
-        every { picSumDao.count() } returns 10
+        coEvery { picSumDao.count() } returns 10
         // When
-        val isEmpty = roomDataSource.isEmpty()
-        // Then
-        assertThat(isEmpty, IsEqual(false))
+        runBlockingTest {
+            val isEmpty = roomDataSource.isEmpty()
+            // Then
+            assertThat(isEmpty, IsEqual(false))
+        }
     }
 
     @Test
-    fun getPictures() = runBlockingTest {
+    fun getPictures() {
         // Given
-        every { picSumDao.getAll() } returns emptyList()
+        coEvery { picSumDao.getAll() } returns emptyList()
         // When
-        val pictures = roomDataSource.getPictures()
-        // Then
-        assertThat(pictures, IsEqual(emptyList()))
+        runBlockingTest {
+            val pictures = roomDataSource.getPictures()
+            // Then
+            assertThat(pictures, IsEqual(emptyList()))
+        }
     }
 
     @Test
-    fun insertPictures() = runBlockingTest {
+    fun insertPictures() {
         // Given
         val pictures = emptyList<Picture>()
-        every { picSumDao.insertPictures(emptyList()) } returns Unit
+        coEvery { picSumDao.insertPictures(emptyList()) } returns Unit
         // When
-        roomDataSource.insertPictures(pictures)
+        runBlockingTest { roomDataSource.insertPictures(pictures) }
         // Then
-        verify { picSumDao.insertPictures(emptyList()) }
+        coVerify { picSumDao.insertPictures(emptyList()) }
     }
 }

@@ -6,6 +6,8 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.santimattius.template.data.datasources.implementation.database.PicSumDao
 import com.santimattius.template.data.datasources.implementation.database.PicSumDataBase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.After
@@ -14,6 +16,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.IOException
 
+@ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 class PicSumDataBaseTest {
 
@@ -37,7 +40,7 @@ class PicSumDataBaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun writePicturesAndReadInListOfPictures() {
+    fun writePicturesAndReadInListOfPictures() = runBlocking {
         val generate = PictureEntityMother.generate(size = 2)
         picSumDao.insertPictures(generate)
         val result = picSumDao.getAll()
@@ -46,7 +49,7 @@ class PicSumDataBaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun writePicturesAndReadInListOfPicturesWithCountValidation() {
+    fun writePicturesAndReadInListOfPicturesWithCountValidation() = runBlocking {
         val generate = PictureEntityMother.generate(size = 2)
         picSumDao.insertPictures(generate)
         val result = picSumDao.count()

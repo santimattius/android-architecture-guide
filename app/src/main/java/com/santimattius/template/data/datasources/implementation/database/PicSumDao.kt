@@ -10,11 +10,11 @@ import com.santimattius.template.data.models.PictureEntity
 interface PicSumDao {
 
     @Query("SELECT * FROM picture")
-    fun getAll(): List<PictureEntity>
+    suspend fun getAll(): List<PictureEntity>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertPictures(pictures: List<PictureEntity>)
+    suspend fun insertPictures(pictures: List<PictureEntity>)
 
     @Query("SELECT COUNT(id) FROM picture")
-    fun count(): Int
+    suspend fun count(): Int
 }
