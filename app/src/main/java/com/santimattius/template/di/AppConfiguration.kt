@@ -12,7 +12,7 @@ object AppConfiguration {
         startKoin {
             androidLogger(Level.NONE)
             androidContext(app)
-            modules(modules)
+            modules(modulesDefinitions)
         }
     }
 }

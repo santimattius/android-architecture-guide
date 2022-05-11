@@ -59,4 +59,4 @@ private val dataModule = module {
     }
 }
 
-internal val modules = listOf(presentationModule, domainModule, dataModule)
+internal val modulesDefinitions = listOf(presentationModule, domainModule, dataModule)
