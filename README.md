@@ -33,22 +33,15 @@ Architecture guide recommended by google for android
 
 Below you will find the libraries used to build the template and according to my criteria the most used in android development so far.
 
-- **Jetpack Compose**:
-  - https://developer.android.com/jetpack/compose
-- **Koin** - dependencie provider: 
-  - https://insert-koin.io/
-- **Retrofit** - networking: 
-  - https://square.github.io/retrofit/
-- **Gson** - json parser:
-  - https://github.com/google/gson
-- **Coil** with image loader:
-  - https://coil-kt.github.io/coil/compose/
-- **Kotlin coroutines**
-  - https://kotlinlang.org/docs/reference/coroutines-overview.html
-- **Mockk**, testing library
-  - https://mockk.io/ 
-- **WebMockServer** 
-  - https://github.com/square/okhttp/tree/master/mockwebserver  
+- **[Jetpack Compose**](https://developer.android.com/jetpack/compose), for ui components.
+- **[Koin](https://insert-koin.io/)** - dependencie provider.
+- **[Retrofit](https://square.github.io/retrofit/)** - networking.
+- **[Gson](https://github.com/google/gson)** - json parser.
+- **[Coil](https://coil-kt.github.io/coil/compose/)** with image loader.
+- **[Kotlin coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)**, for concurrency.
+- **[Mockk](https://mockk.io/)**, testing library.
+- **[WebMockServer](https://github.com/square/okhttp/tree/master/mockwebserver )**, mock service response. 
+
 
 ## References
 
