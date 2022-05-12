@@ -7,9 +7,9 @@ import com.santimattius.template.domain.entities.Picture
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
-internal class RoomDataSource(
+class RoomDataSource(
     private val picSumDao: PicSumDao,
-    private val dispatcher: CoroutineContext
+    private val dispatcher: CoroutineContext,
 ) : LocalDataSource {
 
     override suspend fun isEmpty() = withContext(dispatcher) {

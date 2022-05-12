@@ -5,6 +5,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
+import org.koin.ksp.generated.*
 
 object AppConfiguration {
 
@@ -12,7 +13,7 @@ object AppConfiguration {
         startKoin {
             androidLogger(Level.NONE)
             androidContext(app)
-            modules(modulesDefinitions)
+            modules(Dependencies().module)
         }
     }
 }

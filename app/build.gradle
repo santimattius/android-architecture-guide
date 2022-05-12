@@ -1,9 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-kapt'
     id 'jacoco'
     id 'io.gitlab.arturbosch.detekt'
+    id 'com.google.devtools.ksp' version "$ksp_version"
 }
 
 apply from: "$rootDir/gradle/jacoco.gradle"
@@ -63,6 +63,12 @@ android {
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.sourceSets.java.each {
+            it.srcDirs += "build/generated/ksp/${variant.name}/kotlin"
         }
     }
 }

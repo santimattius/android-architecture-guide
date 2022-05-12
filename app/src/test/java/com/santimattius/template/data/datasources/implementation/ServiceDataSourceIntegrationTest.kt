@@ -1,7 +1,7 @@
 package com.santimattius.template.data.datasources.implementation
 
 import com.google.gson.Gson
-import com.santimattius.template.core.data.service
+import com.santimattius.template.core.data.RetrofitCreator
 import com.santimattius.template.data.datasources.implementation.client.PicSumClient
 import com.santimattius.template.objectmothers.NetworkPictureMother
 import com.santimattius.template.utils.CoroutinesTestRule
@@ -30,7 +30,7 @@ class ServiceDataSourceIntegrationTest {
     fun setup() {
         mockWebServer.start(8080)
         val baseUrl = mockWebServer.url("/").toUri().toString()
-        picSumClient = PicSumClient(service(baseUrl))
+        picSumClient = PicSumClient(RetrofitCreator.service(baseUrl))
         serviceDataSource = ServiceDataSource(picSumClient)
     }
 
