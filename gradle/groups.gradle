@@ -26,12 +26,11 @@ project.ext {
     koin = Group {
         // Koin main features for Android (Scope,ViewModel ...)
         implementation "io.insert-koin:koin-android:$koin_version"
-        // Koin Java Compatibility
-        implementation "io.insert-koin:koin-android-compat:$koin_version"
-        // Koin for Jetpack WorkManager
-        implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
         // Koin for Jetpack Compose
         implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+        //annotations
+        implementation "io.insert-koin:koin-annotations:$koin_ksp_version"
+        ksp "io.insert-koin:koin-ksp-compiler:$koin_ksp_version"
 
         testImplementation "io.insert-koin:koin-test:$koin_version"
     }
@@ -65,7 +64,7 @@ project.ext {
     room = Group {
         implementation "androidx.room:room-runtime:$room_version"
         implementation "androidx.room:room-ktx:$room_version"
-        kapt "androidx.room:room-compiler:$room_version"
+        ksp("androidx.room:room-compiler:$room_version")
     }
 
     coroutines = Group {

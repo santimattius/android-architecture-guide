@@ -7,6 +7,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.koinApplication
+import org.koin.ksp.generated.*
 import org.koin.test.KoinTest
 import org.koin.test.check.checkModules
 import org.robolectric.annotation.Config
@@ -18,7 +19,7 @@ class AppConfigurationTest : KoinTest {
     fun verifyKoinApp() {
         koinApplication {
             androidContext(ApplicationProvider.getApplicationContext())
-            modules(modulesDefinitions)
+            modules(Dependencies().module)
             checkModules()
         }
     }
