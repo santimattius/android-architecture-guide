@@ -33,7 +33,7 @@ Architecture guide recommended by google for android
 
 Below you will find the libraries used to build the template and according to my criteria the most used in android development so far.
 
-- **[Jetpack Compose**](https://developer.android.com/jetpack/compose), for ui components.
+- **[Jetpack Compose](https://developer.android.com/jetpack/compose)**, for ui components.
 - **[Koin](https://insert-koin.io/)** - dependencie provider.
 - **[Retrofit](https://square.github.io/retrofit/)** - networking.
 - **[Gson](https://github.com/google/gson)** - json parser.
