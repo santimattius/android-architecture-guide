@@ -796,3 +796,4 @@ style:
       - 'java.util.*'
       - 'kotlinx.android.synthetic.*'
       - 'androidx.compose.foundation.layout.*'
+      - 'org.koin.ksp.generated.*'
