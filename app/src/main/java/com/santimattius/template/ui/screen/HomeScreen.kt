@@ -2,6 +2,9 @@ package com.santimattius.template.ui.screen
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Scaffold
@@ -41,15 +44,19 @@ private fun HomeScreen(
                 title = { Text(stringResource(R.string.app_name)) }
             )
         }
-    ) {
-        when {
-            state.isLoading -> LoadingIndicator()
-            state.withError -> ErrorView(stringResource(R.string.text_error))
-            state.isEmpty -> ErrorView(stringResource(R.string.text_empty))
-            else -> ListOfPicture(
-                pictures = state.pictures,
-                onClick = onClick
-            )
+    ) { padding ->
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(padding)) {
+            when {
+                state.isLoading -> LoadingIndicator()
+                state.withError -> ErrorView(stringResource(R.string.text_error))
+                state.isEmpty -> ErrorView(stringResource(R.string.text_empty))
+                else -> ListOfPicture(
+                    pictures = state.pictures,
+                    onClick = onClick
+                )
+            }
         }
     }
 }
