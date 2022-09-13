@@ -1,21 +1,36 @@
-package com.santimattius.template
+package com.santimattius.template.ui.screen
 
+import android.os.Build
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import coil.annotation.ExperimentalCoilApi
+import com.santimattius.template.MainActivity
+import com.santimattius.template.MainApplication
+import com.santimattius.template.PicturesApplication
+import com.santimattius.template.objectmothers.PictureMother
 import com.santimattius.template.ui.models.mapping.asUiModels
-import com.santimattius.template.ui.screen.LIST_OF_PICTURE_TAG
-import com.santimattius.template.ui.screen.ListOfPicture
+import com.santimattius.template.utils.KoinRule
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.test.KoinTest
+import org.robolectric.annotation.Config
 
 @ExperimentalCoilApi
 @ExperimentalFoundationApi
 @RunWith(AndroidJUnit4::class)
-class ListOfPictureTest {
+@Config(
+    manifest = Config.NONE,
+    sdk = [Build.VERSION_CODES.R],
+    instrumentedPackages = ["androidx.loader.content"],
+    application = MainApplication::class
+)
+class ListOfPictureTest : KoinTest {
+
+    @get:Rule
+    val koinRule = KoinRule.androidx()
 
     @get:Rule
     val composeTestRule = createAndroidComposeRule<MainActivity>()

@@ -20,6 +20,7 @@ project.ext {
         implementation "androidx.activity:activity-compose:$activity_compose_version"
 
         debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+        testImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
         androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     }
 
@@ -101,5 +102,10 @@ project.ext {
         debugImplementation("androidx.fragment:fragment-testing:$fragment_version") {
             exclude group: "androidx.test", module: "core"
         }
+    }
+
+    robolectric = Group {
+        testImplementation "org.robolectric:robolectric:$robolectric_version"
+        testImplementation "org.robolectric:shadows-httpclient:$robolectric_version"
     }
 }

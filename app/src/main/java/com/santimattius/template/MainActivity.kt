@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import coil.annotation.ExperimentalCoilApi
 import com.santimattius.template.core.presentation.openLink
-import com.santimattius.template.ui.screen.HomeScreen
+import com.santimattius.template.ui.screen.HomeRoute
 
 @ExperimentalCoilApi
 @ExperimentalFoundationApi
@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PicturesApplication {
-                HomeScreen {
+                HomeRoute {
                     openLink(it.link)
                 }
             }

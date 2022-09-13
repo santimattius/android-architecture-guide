@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'jacoco'
     id 'io.gitlab.arturbosch.detekt'
+    id 'org.sonarqube'
 }
 
 apply from: "$rootDir/gradle/jacoco.gradle"
@@ -90,4 +91,19 @@ dependencies {
     room()
     testing()
     androidTests()
+    robolectric()
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectVersion", "1.0"
+        property "sonar.projectName", "android-architecture-guide"
+        property "sonar.projectKey", "android-architecture-guide"
+        property "sonar.host.url", "http://localhost:9000/" // or use an external service like https://sonarcloud.io/
+        property "sonar.login", "sqp_0cd26c669e07c79a2366ab062a753354ce798667" //To be generated in sonarqube
+        property "sonar.language", "kotlin"
+        property "sonar.sources","src/main/java"
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.coverage.jacoco.xmlReportPaths", "${rootProject.projectDir}/app/build/reports/jacoco/testDebugUnitTestCoverage/testDebugUnitTestCoverage.xml"
+    }
 }

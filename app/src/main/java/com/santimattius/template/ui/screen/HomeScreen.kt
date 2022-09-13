@@ -13,6 +13,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import coil.annotation.ExperimentalCoilApi
 import com.santimattius.template.R
+import com.santimattius.template.ui.models.HomeState
 import com.santimattius.template.ui.models.PictureUiModel
 import com.santimattius.template.ui.models.isEmpty
 import com.santimattius.template.ui.viewmodels.HomeViewModel
@@ -21,9 +22,18 @@ import org.koin.androidx.compose.getViewModel
 @ExperimentalCoilApi
 @ExperimentalFoundationApi
 @Composable
-fun HomeScreen(
+fun HomeRoute(
     viewModel: HomeViewModel = getViewModel(),
-    onClick: (PictureUiModel) -> Unit
+    onClick: (PictureUiModel) -> Unit,
+) {
+    HomeScreen(viewModel.state, onClick)
+}
+
+@ExperimentalCoilApi
+@Composable
+private fun HomeScreen(
+    state: HomeState,
+    onClick: (PictureUiModel) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -33,11 +43,11 @@ fun HomeScreen(
         }
     ) {
         when {
-            viewModel.state.isLoading -> LoadingIndicator()
-            viewModel.state.withError -> ErrorView(stringResource(R.string.text_error))
-            viewModel.state.isEmpty -> ErrorView(stringResource(R.string.text_empty))
+            state.isLoading -> LoadingIndicator()
+            state.withError -> ErrorView(stringResource(R.string.text_error))
+            state.isEmpty -> ErrorView(stringResource(R.string.text_empty))
             else -> ListOfPicture(
-                pictures = viewModel.state.pictures,
+                pictures = state.pictures,
                 onClick = onClick
             )
         }
@@ -50,7 +60,7 @@ const val LIST_OF_PICTURE_TAG = "list_of_picture_test_tag"
 @Composable
 fun ListOfPicture(
     pictures: List<PictureUiModel>,
-    onClick: (PictureUiModel) -> Unit = {}
+    onClick: (PictureUiModel) -> Unit = {},
 ) {
     LazyColumn(modifier = Modifier.testTag(LIST_OF_PICTURE_TAG)) {
         items(pictures) { picture ->
