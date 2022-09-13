@@ -35,7 +35,7 @@ project.ext {
     detekt_version = '1.18.1'
     jacoco_version = '0.8.8'
     robolectric_version = '4.8'
-    sonarqube_version = '3.0'
+    sonarqube_version = '3.4.0.2513'
 }
 
 allprojects {
