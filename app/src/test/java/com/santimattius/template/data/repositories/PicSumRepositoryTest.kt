@@ -7,7 +7,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
 
@@ -27,7 +27,7 @@ class PicSumRepositoryTest {
         coEvery { localDataSource.isEmpty() } returns false
         coEvery { localDataSource.getPictures() } returns emptyList()
 
-        runBlockingTest {
+        runTest {
             val pictures = repository.getPictures()
 
             assert(pictures.isEmpty())
@@ -44,7 +44,7 @@ class PicSumRepositoryTest {
         coEvery { localDataSource.insertPictures(any()) } returns Unit
         coEvery { localDataSource.getPictures() } returns emptyList()
 
-        runBlockingTest {
+        runTest {
             val pictures = repository.getPictures()
 
             assert(pictures.isEmpty())

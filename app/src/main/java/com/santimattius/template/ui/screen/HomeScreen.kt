@@ -17,13 +17,13 @@ import com.santimattius.template.ui.models.HomeState
 import com.santimattius.template.ui.models.PictureUiModel
 import com.santimattius.template.ui.models.isEmpty
 import com.santimattius.template.ui.viewmodels.HomeViewModel
-import org.koin.androidx.compose.getViewModel
+
 
 @ExperimentalCoilApi
 @ExperimentalFoundationApi
 @Composable
 fun HomeRoute(
-    viewModel: HomeViewModel = getViewModel(),
+    viewModel: HomeViewModel,
     onClick: (PictureUiModel) -> Unit,
 ) {
     HomeScreen(viewModel.state, onClick)

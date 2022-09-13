@@ -7,7 +7,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Rule
@@ -30,7 +30,7 @@ class RoomDataSourceTest {
         // Given
         coEvery { picSumDao.count() } returns 0
         // When
-        runBlockingTest {
+        runTest {
             val isEmpty = roomDataSource.isEmpty()
             // Then
             assertThat(isEmpty, IsEqual(true))
@@ -43,7 +43,7 @@ class RoomDataSourceTest {
         // Given
         coEvery { picSumDao.count() } returns 10
         // When
-        runBlockingTest {
+        runTest {
             val isEmpty = roomDataSource.isEmpty()
             // Then
             assertThat(isEmpty, IsEqual(false))
@@ -55,7 +55,7 @@ class RoomDataSourceTest {
         // Given
         coEvery { picSumDao.getAll() } returns emptyList()
         // When
-        runBlockingTest {
+        runTest {
             val pictures = roomDataSource.getPictures()
             // Then
             assertThat(pictures, IsEqual(emptyList()))
@@ -68,7 +68,7 @@ class RoomDataSourceTest {
         val pictures = emptyList<Picture>()
         coEvery { picSumDao.insertPictures(emptyList()) } returns Unit
         // When
-        runBlockingTest { roomDataSource.insertPictures(pictures) }
+        runTest { roomDataSource.insertPictures(pictures) }
         // Then
         coVerify { picSumDao.insertPictures(emptyList()) }
     }

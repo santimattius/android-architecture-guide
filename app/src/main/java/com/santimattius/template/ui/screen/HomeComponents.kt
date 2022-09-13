@@ -1,6 +1,5 @@
 package com.santimattius.template.ui.screen
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
@@ -15,7 +14,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import coil.annotation.ExperimentalCoilApi
-import coil.compose.rememberImagePainter
+import coil.compose.SubcomposeAsyncImage
 import com.santimattius.template.R
 import com.santimattius.template.ui.models.PictureUiModel
 
@@ -55,14 +54,17 @@ fun PictureCard(picture: PictureUiModel, modifier: Modifier = Modifier) {
     ) {
         Card {
             Column {
-                Image(
-                    painter = rememberImagePainter(data = picture.imageUrl),
+                SubcomposeAsyncImage(
+                    model = picture.imageUrl,
+                    loading = {
+                        CircularProgressIndicator()
+                    },
                     contentDescription = picture.author,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
                         .background(Color.LightGray)
-                        .aspectRatio(ratio = (ASPECT_WIDTH / ASPECT_HEIGHT).toFloat()),
+                        .aspectRatio(ratio = (ASPECT_WIDTH / ASPECT_HEIGHT).toFloat())
                 )
                 Box(
                     modifier = Modifier.padding(

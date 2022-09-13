@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import coil.annotation.ExperimentalCoilApi
 import com.santimattius.template.MainActivity
@@ -23,7 +24,7 @@ import org.robolectric.annotation.Config
 @RunWith(AndroidJUnit4::class)
 @Config(
     manifest = Config.NONE,
-    sdk = [Build.VERSION_CODES.R],
+    sdk = [Build.VERSION_CODES.S_V2],
     instrumentedPackages = ["androidx.loader.content"],
     application = MainApplication::class
 )
@@ -33,7 +34,7 @@ class ListOfPictureTest : KoinTest {
     val koinRule = KoinRule.androidx()
 
     @get:Rule
-    val composeTestRule = createAndroidComposeRule<MainActivity>()
+    val composeTestRule = createComposeRule()
 
     @Test
     fun testPictureListScreenIfPicturesAreEmpty() {

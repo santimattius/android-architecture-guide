@@ -7,7 +7,7 @@ import com.santimattius.template.utils.CoroutinesTestRule
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Rule
@@ -28,7 +28,7 @@ class HomeViewModelTest {
         // Given
         val userCase = mockk<GetPictures>()
         coEvery { userCase() } returns emptyList()
-        runBlockingTest {// When
+        runTest {// When
             val viewModel = HomeViewModel(userCase)
             // Then
             assertThat(viewModel.state, IsEqual(HomeState(pictures = emptyList())))
@@ -41,7 +41,7 @@ class HomeViewModelTest {
         val userCase = mockk<GetPictures>()
         coEvery { userCase() } throws Exception()
         // When
-        runBlockingTest {
+        runTest {
             val viewModel = HomeViewModel(userCase)
             assertThat(viewModel.state, IsEqual(HomeState(withError = true)))
         }
@@ -53,7 +53,7 @@ class HomeViewModelTest {
         val userCase = mockk<GetPictures>()
         coEvery { userCase() } returns emptyList()
         // When
-        runBlockingTest {
+        runTest {
             val viewModel = HomeViewModel(userCase)
             viewModel.retry()
             // Then

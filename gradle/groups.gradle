@@ -19,7 +19,10 @@ project.ext {
         implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
         implementation "androidx.activity:activity-compose:$activity_compose_version"
 
+        //Using for testing
         debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+        debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+
         testImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
         androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     }
@@ -27,13 +30,8 @@ project.ext {
     koin = Group {
         // Koin main features for Android (Scope,ViewModel ...)
         implementation "io.insert-koin:koin-android:$koin_version"
-        // Koin Java Compatibility
-        implementation "io.insert-koin:koin-android-compat:$koin_version"
-        // Koin for Jetpack WorkManager
-        implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
         // Koin for Jetpack Compose
         implementation "io.insert-koin:koin-androidx-compose:$koin_version"
-
         testImplementation "io.insert-koin:koin-test:$koin_version"
     }
 

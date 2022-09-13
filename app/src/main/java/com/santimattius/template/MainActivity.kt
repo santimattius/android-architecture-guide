@@ -7,6 +7,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import coil.annotation.ExperimentalCoilApi
 import com.santimattius.template.core.presentation.openLink
 import com.santimattius.template.ui.screen.HomeRoute
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 @ExperimentalCoilApi
 @ExperimentalFoundationApi
@@ -15,9 +16,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PicturesApplication {
-                HomeRoute {
-                    openLink(it.link)
-                }
+                HomeRoute(
+                    viewModel = getViewModel(),
+                    onClick = { openLink(it.link) }
+                )
             }
         }
     }

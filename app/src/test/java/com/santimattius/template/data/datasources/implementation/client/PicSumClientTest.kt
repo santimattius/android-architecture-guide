@@ -6,7 +6,7 @@ import com.santimattius.template.data.models.NetworkPicture
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Test
@@ -18,7 +18,7 @@ class PicSumClientTest {
     private val client: PicSumClient = PicSumClient(service)
 
     @Test
-    fun `fetch service with response case`() = runBlockingTest {
+    fun `fetch service with response case`() = runTest {
         // Given
         coEvery { service.fetchList() } returns emptyList()
         // When
@@ -29,7 +29,7 @@ class PicSumClientTest {
     }
 
     @Test
-    fun `fetch service with exception`() = runBlockingTest {
+    fun `fetch service with exception`() = runTest {
         // Given
         val message = "fake_message"
         coEvery { service.fetchList() } throws Throwable(message)
