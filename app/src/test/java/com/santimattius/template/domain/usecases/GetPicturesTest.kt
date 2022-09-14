@@ -6,7 +6,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Rule
@@ -25,7 +25,7 @@ class GetPicturesTest {
     fun `invoke get picture use case`() {
         // Given
         coEvery { repository.getPictures() } returns emptyList()
-        runBlockingTest {// When
+        runTest {// When
             val result = useCase.invoke()
             // Then
             assertThat(result, IsEqual(emptyList()))

@@ -9,7 +9,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Rule
@@ -30,7 +30,7 @@ class ServiceDataSourceTest {
         val pictures = NetworkPictureMother.pictures()
         coEvery { picSumClient.fetchList() } returns Result.success(pictures)
         // When
-        runBlockingTest {
+        runTest {
             val result = serviceDataSource.getPictures()
             // Then
             assertThat(result, IsEqual(pictures))
@@ -44,7 +44,7 @@ class ServiceDataSourceTest {
         val failure = Result.failure(ServiceError("test case on fail"))
         coEvery { picSumClient.fetchList() } returns failure
         // When
-        runBlockingTest {
+        runTest {
             val result = serviceDataSource.getPictures()
             // Then
             assertThat(result, IsEqual(emptyList()))
