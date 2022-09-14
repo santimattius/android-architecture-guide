@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.SubcomposeAsyncImage
 import com.santimattius.template.R
@@ -56,9 +57,6 @@ fun PictureCard(picture: PictureUiModel, modifier: Modifier = Modifier) {
             Column {
                 SubcomposeAsyncImage(
                     model = picture.imageUrl,
-                    loading = {
-                        CircularProgressIndicator()
-                    },
                     contentDescription = picture.author,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
