@@ -29,6 +29,63 @@ Architecture guide recommended by google for android
   <img width="450" src="https://github.com/santimattius/android-architecture-guide/blob/master/screenshoot/android-architecture-guide.png?raw=true" alt="architecture layers"/>
 </p>
 
+## Basics checks
+Run verification commands:
+```shell
+./gradlew app:check
+```
+or
+
+```shell
+./gradlew app:test
+```
+executing tests
+
+## Detekt
+This project contains DeteKt configurations, run next command in your terminal.
+
+```shell
+./gradlew app:detekt
+```
+
+## Jacoco
+Run next command in your terminal for generate jacoco coverage report
+
+```shell
+./gradlew app:testDebugUnitTestCoverage
+```
+
+## SonarQube
+Install sonarqube using Home brew
+```shell
+brew install sonarqube 
+brew install sonar-scanner
+```
+
+After installation of the sonarqube you need to start the services. Please enter the command brew services start sonarqube in the terminal. You can create your credentials by hitting this URL: http://localhost:9000/
+
+Update your sonar project setting on build.gradle:
+
+```groovy
+  sonarqube {
+      properties {
+          property "sonar.projectVersion", "1.0"
+          property "sonar.projectName", "your app name in sonar"
+          property "sonar.projectKey", "your app name in sonar"
+          property "sonar.host.url", "http://localhost:9000/" // or https://sonarcloud.io/
+          property "sonar.login", "xxxxxxxxxxxxxxx" //Generated in sonarqube
+          property "sonar.language", "kotlin"
+          property "sonar.sources","src/main/java"
+          property "sonar.java.coveragePlugin", "jacoco"
+          property "sonar.coverage.jacoco.xmlReportPaths", "${rootProject.projectDir}/app/build/reports/jacoco/debug/jacoco.xml"
+      }
+  }
+```
+Again in the Android Studio, hit this command in terminal
+
+```shell
+./gradlew sonarqube
+```
 ## Dependencies
 
 Below you will find the libraries used to build the template and according to my criteria the most used in android development so far.
