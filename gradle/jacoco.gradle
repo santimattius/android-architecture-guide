@@ -41,14 +41,19 @@ ext.excludes = [
         '**/*_Factory*.*',
         '**/*_Provide*Factory*.*',
         '**/*Extensions*.*',
+        '**/*_Impl.class',
+        '**/*Dao*.class',
         '**/data/entities/*.*',
         '**/domain/entities/*.*',
         '**/models/*.*',
         '**/di/*.*',
         '**/ui/screen/*.*',
-        '**/di/theme/*.*',
+        '**/ui/theme/*.*',
         '**/client/database/*.*',
         '**/MappingKt.class',
+        '**/PicSumDataBase*.*',
+        '**/MainActivity*.*',
+        '**/MainApplication*.*',
 ]
 
 def createVariantCoverage(variant) {
