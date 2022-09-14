@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/gh/santimattius/android-architecture-guide/branch/master/graph/badge.svg?token=4KNEHBG5ZF)](https://codecov.io/gh/santimattius/android-architecture-guide)
+[![codecov](https://codecov.io/gh/santimattius/android-architecture-guide/branch/master/graph/badge.svg?token=4KNEHBG5ZF)](https://codecov.io/gh/santimattius/android-architecture-guide) ![Quality Checks](https://github.com/santimattius/android-architecture-guide//actions/workflows/main.yml/badge.svg)
 
 # Android Architecture Guide Template
 
